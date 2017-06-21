@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">College Message Board</string>
+    <string name="api_url">http://gietcmb.rollers.solutions/</string>
 </resources>
