@@ -1,9 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="solutions.rollers.collegemessageboard.AddNews">
+    tools:context="solutions.rollers.collegemessageboard.NewsFeed">
+    <ScrollView
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView2">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-</android.support.constraint.ConstraintLayout>
+            <Spinner
+                android:id="@+id/year_spinner"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <Spinner
+                android:layout_below="@id/year_spinner"
+                android:id="@+id/branch_spinner"
+                android:layout_marginBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <CheckBox
+                android:id="@+id/send_notification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Send Notification"
+                android:layout_below="@+id/branch_spinner"
+                android:layout_alignParentStart="true" />
+
+            <EditText
+                android:layout_below="@id/send_notification"
+                android:id="@+id/news_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="Enter the Message Title" />
+
+            <EditText
+                android:layout_marginBottom="5dp"
+                android:id="@+id/news_message"
+                android:layout_below="@id/news_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:gravity="top"
+                android:lines="9"
+                android:hint="Enter Your Message"
+                android:inputType="textMultiLine" />
+
+            <Button
+                android:text="Add News"
+                android:layout_marginBottom="20dp"
+                android:layout_below="@id/news_message"
+                android:id="@+id/news_add_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <android.support.v4.widget.Space
+                android:layout_below="@+id/news_add_button"
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+            <com.google.android.gms.ads.AdView
+                xmlns:ads="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/adView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                ads:adSize="BANNER"
+                ads:adUnitId="ca-app-pub-5563376976296278/6588300145" />
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

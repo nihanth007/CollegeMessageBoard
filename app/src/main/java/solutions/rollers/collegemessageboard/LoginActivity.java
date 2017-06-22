@@ -1,6 +1,7 @@
 package solutions.rollers.collegemessageboard;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -53,23 +54,6 @@ public class LoginActivity extends AppCompatActivity {
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
-        mInterstitialAd = new InterstitialAd(this);
-        //mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
-        mInterstitialAd.setAdUnitId("ca-app-pub-5563376976296278/4692764547");
-        mInterstitialAd.loadAd(new AdRequest.Builder().build());
-        mInterstitialAd.setAdListener(new AdListener() {
-            @Override
-            public void onAdClosed() {
-                // Load the next interstitial.
-                mInterstitialAd.loadAd(new AdRequest.Builder().build());
-            }
-
-            @Override
-            public void onAdOpened() {
-                super.onAdOpened();
-            }
-        });
-
         username = (EditText) findViewById(R.id.Username);
         password = (EditText) findViewById(R.id.Password);
         Error = (TextView) findViewById(R.id.ErrorMessage);
@@ -78,10 +62,6 @@ public class LoginActivity extends AppCompatActivity {
     public void Login(View view) {
         final String user = username.getText().toString();
         final String pass = password.getText().toString();
-
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
-        }
 
         if (!validate_login()) {
             return;
@@ -112,6 +92,16 @@ public class LoginActivity extends AppCompatActivity {
                                 Error.setText(ErrorMessage);
                             } else {
                                 //Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
+                                int user_type = jsonObject.get("user_type").getAsInt();
+                                if(user_type == 1){
+                                    Intent i = new Intent();
+                                    i.setClass(LoginActivity.this,AdminNewsFeed.class);
+                                    startActivity(i);
+                                }else if(user_type == 2){
+                                    Intent i = new Intent();
+                                    i.setClass(LoginActivity.this,NewsFeed.class);
+                                    startActivity(i);
+                                }
                             }
                         }
                     }
