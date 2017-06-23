@@ -1,5 +1,7 @@
 package solutions.rollers.collegemessageboard.Models;
 
+import android.content.Context;
+
 /**
  * Created by nihan on 22-06-2017.
  */
@@ -10,11 +12,14 @@ public class AdminNewsItem {
     String date_time;
     int sent;
     int opened;
+    float progress;
     String year;
     String branch;
     int msg_id;
+    public Context context;
 
-    public AdminNewsItem(String title, String message, String date_time, int sent, int opened, String year, String branch, int msg_id) {
+
+    public AdminNewsItem(String title, String message, String date_time, int sent, int opened, String year, String branch, int msg_id, Context context) {
         this.title = title;
         this.message = message;
         this.date_time = date_time;
@@ -23,6 +28,8 @@ public class AdminNewsItem {
         this.year = year;
         this.branch = branch;
         this.msg_id = msg_id;
+        this.progress = (opened/(float)sent) * 100;
+        this.context = context;
     }
 
     public String getTitle() {
@@ -55,6 +62,14 @@ public class AdminNewsItem {
 
     public int getMsg_id() {
         return msg_id;
+    }
+
+    public float getProgress() {
+        return progress;
+    }
+
+    public void setProgress(int progress) {
+        this.progress = progress;
     }
 
     public void setTitle(String title) {

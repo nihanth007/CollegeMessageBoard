@@ -26,7 +26,7 @@
                 android:textStyle="italic"
                 android:textColor="#0F0F8F"
                 style="@style/Base.TextAppearance.AppCompat.Subhead"
-                android:text="Date - Time"
+                android:text="Message"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <TextView
