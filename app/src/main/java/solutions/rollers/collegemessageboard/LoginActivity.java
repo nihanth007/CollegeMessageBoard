@@ -91,6 +91,15 @@ public class LoginActivity extends AppCompatActivity {
                                 String ErrorMessage = jsonObject.get("Message").getAsString();
                                 Error.setText(ErrorMessage);
                             } else {
+
+                                SharedPreferences settings = getSharedPreferences("settings", 0);
+                                SharedPreferences.Editor editor = settings.edit();
+                                editor.putString("username",user);
+                                editor.putInt("user_type",jsonObject.get("user_type").getAsInt());
+                                editor.putString("year",jsonObject.get("year").getAsString());
+                                editor.putString("branch",jsonObject.get("branch").getAsString());
+                                editor.putString("full_name",jsonObject.get("full_name").getAsString());
+                                editor.apply();
                                 //Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
                                 int user_type = jsonObject.get("user_type").getAsInt();
                                 if(user_type == 1){

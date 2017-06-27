@@ -58,6 +58,7 @@
 
             <Button
                 android:text="Add News"
+                android:onClick="Add_News"
                 android:layout_marginBottom="20dp"
                 android:layout_below="@id/news_message"
                 android:id="@+id/news_add_button"

@@ -1,6 +1,7 @@
 package solutions.rollers.collegemessageboard;
 
 import android.app.ProgressDialog;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -94,9 +95,10 @@ public class NewsFeed extends AppCompatActivity {
         String url = "http://gietcmb.rollers.solutions/" + "load_messages.php";
 
         RequestParams params = new RequestParams();
-        params.put("branch","cse");
-        params.put("year","2015");
-        params.put("user_type",2);
+        SharedPreferences settings = getSharedPreferences("settings", 0);
+        params.put("branch",settings.getString("branch","NULL"));
+        params.put("year",settings.getString("year","NULL"));
+        params.put("user_type",settings.getInt("user_type",2));
         AsyncHttpClient client = new AsyncHttpClient();
         client.post(url, params, new AsyncHttpResponseHandler() {
             @Override
